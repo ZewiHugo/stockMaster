@@ -1,14 +1,19 @@
 package main
 
 import (
-	"encoding/csv"
 	"fmt"
 	"net"
 	"net/http"
 	"time"
+
+	"github.com/gocarina/gocsv"
+	"github.com/pkg/errors"
 )
 
 type Symbol struct {
+	Symbol  string `csv:"Symbol"`
+	Sector  string `csv:"Sector"`
+	IPOyear string `csv:"IPOyear"`
 }
 
 func main() {
@@ -27,45 +32,19 @@ func main() {
 	}
 	resp, err := client.Get(url)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(errors.WithStack(err))
 		return
 	}
 	defer resp.Body.Close()
 	fmt.Println(resp.Status)
-	records, err := csv.NewReader(resp.Body).ReadAll()
+	var symbols []Symbol
+	err = gocsv.Unmarshal(resp.Body, &symbols)
 	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	if len(records) < 1 {
-		fmt.Println("can't find any records in response body")
+		fmt.Println(errors.WithStack(err))
 		return
 	}
 
-	symbolIdx := -1
-	industryIdx := -1
-	for i, str := range records[0] {
-		if str == "Symbol" {
-			symbolIdx = i
-		} else if str == "Industry" {
-			industryIdx = i
-		}
-	}
-	if symbolIdx == -1 {
-		fmt.Println("cant's find Symbol header")
-		return
-	}
-
-	if industryIdx == -1 {
-		fmt.Println("can't find Industry header")
-		return
-	}
-
-	for _, strings := range records {
-
-		for _, string := range strings {
-			fmt.Printf("%v, ", string)
-		}
-		fmt.Println("")
+	for _, symbol := range symbols {
+		fmt.Println(symbol.Symbol, symbol.Sector, symbol.IPOyear)
 	}
 }
