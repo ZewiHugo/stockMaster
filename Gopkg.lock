@@ -3,11 +3,59 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:6212ce7f839b40213d1ff75c3df7816c4023faf4d29da630ce1dfdd1ccd5fb02"
+  name = "github.com/GeertJohan/go.rice"
+  packages = [
+    ".",
+    "embedded",
+  ]
+  pruneopts = "UT"
+  revision = "0af3f3b09a0a8b391f63ab52ba5ab50f84fabd30"
+
+[[projects]]
+  branch = "master"
+  digest = "1:5fd5c4d4282935b7a575299494f2c09e9d2cacded7815c83aff7c1602aff3154"
+  name = "github.com/daaku/go.zipexe"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "a5fe2436ffcb3236e175e5149162b41cd28bd27d"
+
+[[projects]]
+  branch = "master"
   digest = "1:d64295b5ec8d005079c11a1b647a1792ca8260eafbbbb10ef8092e5ca85038be"
   name = "github.com/gocarina/gocsv"
   packages = ["."]
   pruneopts = "UT"
   revision = "cde31a6ec2a87636e8a5f13d18468e9dd683149e"
+
+[[projects]]
+  branch = "master"
+  digest = "1:fca839d5e4677fafc9b15b4b3e3b3df0cd9c5f1b255f02f4e4ce611d48ab89c3"
+  name = "github.com/gocql/gocql"
+  packages = [
+    ".",
+    "internal/lru",
+    "internal/murmur",
+    "internal/streams",
+  ]
+  pruneopts = "UT"
+  revision = "30de9a1866a84c5cf21c2722b09ee6acac943084"
+
+[[projects]]
+  branch = "master"
+  digest = "1:4a0c6bb4805508a6287675fac876be2ac1182539ca8a32468d8128882e9d5009"
+  name = "github.com/golang/snappy"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "2e65f85255dbc3072edf28d6b5b8efc472979f5a"
+
+[[projects]]
+  branch = "master"
+  digest = "1:364b908b9b27b97ab838f2f6f1b1f46281fa29b978a037d72a9b1d4f6d940190"
+  name = "github.com/hailocab/go-hostpool"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e80d13ce29ede4452c43dea11e79b9bc8a15b478"
 
 [[projects]]
   digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
@@ -17,11 +65,21 @@
   revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
   version = "v0.8.0"
 
+[[projects]]
+  digest = "1:2d1fbdc6777e5408cabeb02bf336305e724b925ff4546ded0fa8715a7267922a"
+  name = "gopkg.in/inf.v0"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "d2d2541c53f18d2a059457998ce2876cc8e67cbf"
+  version = "v0.9.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/GeertJohan/go.rice",
     "github.com/gocarina/gocsv",
+    "github.com/gocql/gocql",
     "github.com/pkg/errors",
   ]
   solver-name = "gps-cdcl"

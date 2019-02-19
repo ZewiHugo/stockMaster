@@ -1,0 +1,5 @@
+CREATE KEYSPACE IF NOT EXISTS {{.KeyspaceName}}
+    WITH REPLICATION = {
+        'class' : '{{.KeyspaceClass}}',
+        'replication_factor': {{.ReplicationFactor}}
+    };
