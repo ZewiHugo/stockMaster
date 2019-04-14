@@ -15,9 +15,12 @@ import (
 )
 
 type Symbol struct {
-	Symbol  string `csv:"Symbol"`
-	Sector  string `csv:"Sector"`
-	IPOyear string `csv:"IPOyear"`
+	Symbol    string  `csv:"Symbol"`
+	Name      string  `csv:"Name"`
+	MarketCap float64 `csv:"MarketCap"`
+	Sector    string  `csv:"Sector"`
+	Industry  string  `csv:"Industry`
+	IPOYear   string  `csv:"IPOyear"`
 }
 
 func main() {
@@ -48,7 +51,8 @@ func main() {
 		return
 	}
 
-	fmt.Println(symbols[0].Symbol, symbols[0].Sector, symbols[0].IPOyear)
+	fmt.Printf("%+v\n", symbols[0])
+	fmt.Printf("%+v\n", symbols[0])
 
 	cluster := gocql.NewCluster("127.0.0.1:9042")
 	keyspaceInfo := KeyspaceInfo{
